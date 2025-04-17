@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administrador Morenito</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Ingreso Administrativo</h2>
+    <form id="login-form">
+        <label>Usuario: <input type="text" id="usuario" required></label><br>
+        <label>Contraseña: <input type="password" id="clave" required></label><br>
+        <button type="submit">Ingresar</button>
+    </form>
+
+    <div id="admin-panel" style="display:none;">
+        <h3>Panel de Administración</h3>
+        <p>Aquí podrás gestionar los pedidos.</p>
+    </div>
+
+    <script>
+        document.getElementById("login-form").onsubmit = function(e) {
+            e.preventDefault();
+            const usuario = document.getElementById("usuario").value.trim();
+            const clave = document.getElementById("clave").value.trim();
+            if (usuario === "Oscar Alvarez" && clave === "Oscxrd12") {
+                document.getElementById("login-form").style.display = "none";
+                document.getElementById("admin-panel").style.display = "block";
+            } else {
+                alert("Credenciales incorrectas.");
+            }
+        }
+    </script>
+</body>
+</html>
