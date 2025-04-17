@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #d6f5d6;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.center {
+    text-align: center;
+}
+
+.titulo-principal {
+    font-size: 2.5em;
+    color: #2e7d32;
+}
+
+.subtitulo {
+    font-size: 1.2em;
+    margin-top: -10px;
+}
+
+.boton {
+    background-color: #43a047;
+    color: white;
+    padding: 12px 24px;
+    margin: 10px;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.formulario {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.selector-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.tarjeta {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid transparent;
+}
+
+.tarjeta:hover {
+    border-color: #66bb6a;
+}
+
+/* Colores por tipo */
+.vaca { background-color: #ffffff; }
+.coco { background-color: #e0f7fa; }
+.arequipe { background-color: #ffe0b2; }
+
+.topping.queso { background-color: #fff8dc; }
+.topping.coco { background-color: #f1f8e9; }
+.topping.canela { background-color: #efebe9; }
+.topping.chispas { background-color: #ede7f6; }
+.topping.oreo { background-color: #cfd8dc; }
+.topping.pasas { background-color: #fce4ec; }
+
+.salsa.arequipe { background-color: #ffe0b2; }
+.salsa.lechera { background-color: #fffde7; }
+.salsa.chocolate { background-color: #d7ccc8; }
+.salsa.nutella { background-color: #bcaaa4; }
+.salsa.fresa { background-color: #f8bbd0; }
+.salsa.mora { background-color: #e1bee7; }
+
+.oculto {
+    display: none;
+}

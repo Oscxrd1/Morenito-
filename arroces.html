@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Arma tu Arroz</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="pastel">
+    <div class="container">
+        <h2 class="titulo-principal center">Arma tu Arroz de Leche</h2>
+        <form class="formulario">
+            <input type="text" placeholder="Nombre completo" required><br>
+            <input type="tel" placeholder="Celular" required><br>
+
+            <h3>Sabor</h3>
+            <div class="selector-grid">
+                <label class="tarjeta sabor vaca"><input type="radio" name="sabor" value="Tradicional" required> Tradicional</label>
+                <label class="tarjeta sabor coco"><input type="radio" name="sabor" value="Coco"> Coco</label>
+                <label class="tarjeta sabor arequipe"><input type="radio" name="sabor" value="Arequipe"> Arequipe</label>
+            </div>
+
+            <h3>Toppings (máximo 2)</h3>
+            <div class="selector-grid">
+                <label class="tarjeta topping queso"><input type="checkbox" name="toppings" value="Queso"> Queso</label>
+                <label class="tarjeta topping coco"><input type="checkbox" name="toppings" value="Coco"> Coco</label>
+                <label class="tarjeta topping canela"><input type="checkbox" name="toppings" value="Canela"> Canela</label>
+                <label class="tarjeta topping chispas"><input type="checkbox" name="toppings" value="Chispas"> Chispas</label>
+                <label class="tarjeta topping oreo"><input type="checkbox" name="toppings" value="Oreo"> Oreo</label>
+                <label class="tarjeta topping pasas"><input type="checkbox" name="toppings" value="Pasas"> Uvas pasas</label>
+            </div>
+
+            <h3>Salsa</h3>
+            <div class="selector-grid">
+                <label class="tarjeta salsa arequipe"><input type="radio" name="salsa" value="Arequipe" required> Arequipe</label>
+                <label class="tarjeta salsa lechera"><input type="radio" name="salsa" value="Lechera"> Lechera</label>
+                <label class="tarjeta salsa chocolate"><input type="radio" name="salsa" value="Chocolate"> Chocolate</label>
+                <label class="tarjeta salsa nutella"><input type="radio" name="salsa" value="Nutella"> Nutella</label>
+                <label class="tarjeta salsa fresa"><input type="radio" name="salsa" value="Fresa"> Fresa</label>
+                <label class="tarjeta salsa mora"><input type="radio" name="salsa" value="Mora"> Mora</label>
+            </div>
+
+            <h3>Tamaño</h3>
+            <select required>
+                <option value="">Selecciona un tamaño</option>
+                <option value="8oz">8 oz - $5.900</option>
+                <option value="12oz">12 oz - $9.900</option>
+            </select><br><br>
+
+            <button class="boton" type="submit">Enviar pedido</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Administrador Morenito</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body class="pastel">
+    <div class="container center">
+        <h2 class="titulo-principal">Acceso Administrativo</h2>
+        <form id="login-form" class="formulario">
+            <input type="text" id="usuario" placeholder="Usuario" required /><br />
+            <input type="password" id="clave" placeholder="Contraseña" required /><br />
+            <button class="boton" type="submit">Ingresar</button>
+        </form>
+        <div id="admin-panel" class="oculto">
+            <h3>Panel de Administración</h3>
+            <p>Pedidos y gestión interna.</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById("login-form").onsubmit = function (e) {
+            e.preventDefault();
+            const usuario = document.getElementById("usuario").value.trim();
+            const clave = document.getElementById("clave").value.trim();
+            if (usuario === "Oscar Alvarez" && clave === "Oscxrd12") {
+                document.getElementById("login-form").style.display = "none";
+                document.getElementById("admin-panel").classList.remove("oculto");
+            } else {
+                alert("Credenciales incorrectas.");
+            }
+        };
+    </script>
+</body>
+</html>
