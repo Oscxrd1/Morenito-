@@ -1,0 +1,17 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+}
+header, h2 {
+    text-align: center;
+}
+nav a {
+    margin: 10px;
+    text-decoration: none;
+    color: green;
+    font-weight: bold;
+}
+form {
+    max-width: 600px;
+    margin: auto;
+}
