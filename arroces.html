@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arma tu Arroz - Morenito</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.4.0/default/snipcart.css" />
+  <link rel="stylesheet" href="style.css">
   <script async src="https://cdn.snipcart.com/themes/v3.4.0/default/snipcart.js"></script>
   <script>
     window.SnipcartSettings = {
-      publicApiKey: 'N2JhNWQ2M2QtNTNjOC00OGI2LWFmNGItMDNhOTNhNzdmZDg3NjM4ODA0Nzg1NDAwOTE1NjA3',
-      loadStrategy: 'on-user-interaction'
+        publicApiKey: 'N2JhNWQ2M2QtNTNjOC00OGI2LWFmNGItMDNhOTNhNzdmZDg3NjM4ODA0Nzg1NDAwOTE1NjA3',
+        loadStrategy: 'on-user-interaction'
     };
   </script>
   <style>
@@ -72,55 +73,99 @@
 
       <label for="tamano">Tamaño del vaso</label>
       <select id="tamano" required>
-        <option value="8oz" data-price="6900">8 oz - $6.900</option>
-        <option value="12oz" data-price="10900">12 oz - $10.900</option>
-        <option value="16oz" data-price="12900">16 oz - $12.900</option>
+        <option value="8oz">8 oz - $6.900</option>
+        <option value="12oz">12 oz - $9.900</option>
+        <option value="16oz">16 oz - $12.900</option>
       </select>
 
-      <button type="button" class="snipcart-add-item"
-        data-item-id="arroz-leche"
-        data-item-url="/arroces.html"
-        data-item-name="Arroz de leche personalizado"
+      <!-- Botones fijos para cada tamaño -->
+      <button type="button" id="btn-8oz" class="snipcart-add-item"
+        data-item-id="arroz-leche-8oz"
         data-item-price="6900"
-        data-item-description="Arroz con sabor y toppings al gusto"
-        data-item-custom1-name="Nombre"
-        data-item-custom2-name="Celular"
-        data-item-custom3-name="Sabor"
-        data-item-custom4-name="Toppings"
-        data-item-custom5-name="Salsa"
-        data-item-custom6-name="Tamaño">
-        Enviar pedido
+        data-item-name="Arroz de leche personalizado - 8oz"
+        data-item-description="Arroz con sabor y toppings al gusto">
+        Enviar pedido - 8oz ($6.900)
+      </button>
+      
+      <button type="button" id="btn-12oz" class="snipcart-add-item"
+        data-item-id="arroz-leche-12oz"
+        data-item-price="9900"
+        data-item-name="Arroz de leche personalizado - 12oz"
+        data-item-description="Arroz con sabor y toppings al gusto">
+        Enviar pedido - 12oz ($9.900)
+      </button>
+      
+      <button type="button" id="btn-16oz" class="snipcart-add-item"
+        data-item-id="arroz-leche-16oz"
+        data-item-price="12900"
+        data-item-name="Arroz de leche personalizado - 16oz"
+        data-item-description="Arroz con sabor y toppings al gusto">
+        Enviar pedido - 16oz ($12.900)
       </button>
     </form>
   </div>
 
-  <div hidden id="snipcart"></div>
+  <div hidden id="snipcart" class="snipcart"></div>
 
   <script>
-    const boton = document.querySelector(".snipcart-add-item");
-    boton.addEventListener("click", () => {
-      const nombre = document.getElementById("nombre").value;
-      const celular = document.getElementById("telefono").value;
-      const sabor = document.getElementById("sabor").value;
-      const salsa = document.getElementById("salsa").value;
-      const tamanoSelect = document.getElementById("tamano");
-      const tamano = tamanoSelect.value;
-      const precio = tamanoSelect.options[tamanoSelect.selectedIndex].dataset.price;
-
-      const toppingsSeleccionados = Array.from(document.getElementById("topping").selectedOptions)
-        .map(opt => opt.value).slice(0, 2).join(", ");
-
-      boton.setAttribute("data-item-price", precio);
-      boton.setAttribute("data-item-custom1-value", nombre);
-      boton.setAttribute("data-item-custom2-value", celular);
-      boton.setAttribute("data-item-custom3-value", sabor);
-      boton.setAttribute("data-item-custom4-value", toppingsSeleccionados);
-      boton.setAttribute("data-item-custom5-value", salsa);
-      boton.setAttribute("data-item-custom6-value", tamano);
+    document.addEventListener('DOMContentLoaded', function() {
+      // Obtener referencias a los elementos
+      const nombreInput = document.getElementById('nombre');
+      const telefonoInput = document.getElementById('telefono');
+      const saborSelect = document.getElementById('sabor');
+      const toppingSelect = document.getElementById('topping');
+      const salsaSelect = document.getElementById('salsa');
+      const tamanoSelect = document.getElementById('tamano');
+      
+      // Obtener referencias a los botones
+      const btn8oz = document.getElementById('btn-8oz');
+      const btn12oz = document.getElementById('btn-12oz');
+      const btn16oz = document.getElementById('btn-16oz');
+      
+      // Función para actualizar los atributos de los botones
+      function actualizarBotones() {
+        const nombre = nombreInput.value;
+        const telefono = telefonoInput.value;
+        const sabor = saborSelect.value;
+        const salsa = salsaSelect.value;
+        
+        const toppingsSeleccionados = Array.from(toppingSelect.selectedOptions)
+          .map(opt => opt.value).slice(0, 2).join(', ');
+        
+        // Actualizar atributos comunes para todos los botones
+        [btn8oz, btn12oz, btn16oz].forEach(btn => {
+          btn.setAttribute('data-item-custom1-name', 'Nombre');
+          btn.setAttribute('data-item-custom1-value', nombre);
+          btn.setAttribute('data-item-custom2-name', 'Celular');
+          btn.setAttribute('data-item-custom2-value', telefono);
+          btn.setAttribute('data-item-custom3-name', 'Sabor');
+          btn.setAttribute('data-item-custom3-value', sabor);
+          btn.setAttribute('data-item-custom4-name', 'Toppings');
+          btn.setAttribute('data-item-custom4-value', toppingsSeleccionados);
+          btn.setAttribute('data-item-custom5-name', 'Salsa');
+          btn.setAttribute('data-item-custom5-value', salsa);
+        });
+        
+        // Mostrar solo el botón del tamaño seleccionado
+        const tamanoSeleccionado = tamanoSelect.value;
+        btn8oz.style.display = tamanoSeleccionado === '8oz' ? 'block' : 'none';
+        btn12oz.style.display = tamanoSeleccionado === '12oz' ? 'block' : 'none';
+        btn16oz.style.display = tamanoSeleccionado === '16oz' ? 'block' : 'none';
+      }
+      
+      // Actualizar botones cuando cambie cualquier campo
+      nombreInput.addEventListener('input', actualizarBotones);
+      telefonoInput.addEventListener('input', actualizarBotones);
+      saborSelect.addEventListener('change', actualizarBotones);
+      toppingSelect.addEventListener('change', actualizarBotones);
+      salsaSelect.addEventListener('change', actualizarBotones);
+      tamanoSelect.addEventListener('change', actualizarBotones);
+      
+      // Inicializar botones
+      actualizarBotones();
     });
-  </script>
-
-  <script>
+    
+    // Script para redirección a página de gracias
     document.addEventListener('snipcart.ready', function() {
       Snipcart.events.on('order.completed', function(order) {
         window.location.href = '/gracias.html';
