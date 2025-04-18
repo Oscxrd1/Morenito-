@@ -1,0 +1,7 @@
+<script>
+document.addEventListener('snipcart.ready', function() {
+  Snipcart.events.on('order.completed', function(order) {
+    window.location.href = '/gracias.html';
+  });
+});
+</script>
