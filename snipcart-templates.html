@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plantillas personalizadas de Snipcart</title>
+</head>
+<body>
+  <div id="snipcart-templates">
+    <!-- Personalización para ocultar campos de dirección en la facturación -->
+    <address-fields>
+      <div class="root">
+        <div>
+          <snipcart-label for="name">
+            {{ $localize('address.form.name') }}
+          </snipcart-label>
+          <snipcart-input name="name"></snipcart-input>
+          <snipcart-error-message name="name"></snipcart-error-message>
+        </div>
+        
+        <div>
+          <snipcart-label for="email">
+            {{ $localize('address.form.email') }}
+          </snipcart-label>
+          <snipcart-input name="email"></snipcart-input>
+          <snipcart-error-message name="email"></snipcart-error-message>
+        </div>
+        
+        <!-- Campos ocultos con valores predeterminados -->
+        <div style="display: none;">
+          <snipcart-input name="address1" value="N/A"></snipcart-input>
+          <snipcart-input name="city" value="N/A"></snipcart-input>
+          <snipcart-input name="country" value="CO"></snipcart-input>
+          <snipcart-input name="province" value="N/A"></snipcart-input>
+          <snipcart-input name="postalCode" value="00000"></snipcart-input>
+        </div>
+      </div>
+    </address-fields>
+    
+    <!-- Personalización para deshabilitar la edición de elementos -->
+    <item-line>
+      <div class="root">
+        <div class="item-line">
+          <div class="item-line__product">
+            <div class="item-line__info">
+              <h2 class="item-line__name">{{ item.name }}</h2>
+              <div class="item-line__description">{{ item.description }}</div>
+              <div class="item-line__customfields">
+                <div v-for="(value, name) in item.customFields">
+                  <div class="item-line__customfield">
+                    <span class="item-line__customfield-label">{{ name }}:</span>
+                    <span class="item-line__customfield-value">{{ value }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item-line__quantity">
+            <div class="item-line__quantity-text">{{ item.quantity }}</div>
+          </div>
+          <div class="item-line__price">
+            {{ $price(item.totalPrice) }}
+          </div>
+        </div>
+      </div>
+    </item-line>
+  </div>
+</body>
+</html>
